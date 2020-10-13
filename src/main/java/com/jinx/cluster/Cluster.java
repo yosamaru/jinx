@@ -7,5 +7,5 @@ import com.jinx.rpc.RpcException;
  *
  */
 public interface Cluster {
-    <T> Invoker<T> join(Directory directory, String clusterName) throws RpcException;
+    <T> Invoker<T> join(Directory<T> directory, String clusterName) throws RpcException;
 }

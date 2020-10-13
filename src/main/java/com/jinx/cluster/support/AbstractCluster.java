@@ -8,11 +8,11 @@ import com.jinx.rpc.RpcException;
 public abstract class AbstractCluster implements Cluster {
 
     @Override
-    public<T> Invoker<T>  join(Directory directory, String clusterName) throws RpcException {
+    public<T> Invoker<T>  join(Directory<T> directory, String clusterName) throws RpcException {
         return buildClusterInterceptors(doJoin(directory), clusterName);
     }
 
-    protected abstract <T> Invoker<T> doJoin(Directory directory);
+    protected abstract <T> Invoker<T> doJoin(Directory<T> directory);
 
     /**
      * 根据传入的参数构建ClusterInvoker

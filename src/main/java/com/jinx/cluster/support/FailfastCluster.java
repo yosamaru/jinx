@@ -5,7 +5,7 @@ import com.jinx.rpc.Invoker;
 
 public class FailfastCluster extends AbstractCluster {
     @Override
-    protected <T> Invoker<T> doJoin(Directory directory) {
+    protected <T> Invoker<T> doJoin(Directory<T> directory) {
         return new FailfastClusterInvoker(directory);
     }
 }

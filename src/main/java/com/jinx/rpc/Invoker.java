@@ -2,52 +2,28 @@ package com.jinx.rpc;
 
 
 import com.jinx.cluster.Directory;
+import com.jinx.common.Node;
 import com.jinx.common.URL;
 import com.jinx.remoting.transport.Transport;
 import com.jinx.cluster.LoadBalance;
 
 import java.util.List;
+public interface Invoker<T> extends Node {
 
-public class Invoker<T> {
-    private URL url;
-    private Class<T> rfs;
-    private Transport netClinet;
-    private Directory directory;
-    public Directory getDirectory() {
-        return directory;
-    }
+    /**
+     * get service interface.
+     *
+     * @return service interface.
+     */
+    Class<T> getInterface();
 
-    public void setDirectory(Directory directory) {
-        this.directory = directory;
-    }
+    /**
+     * invoke.
+     *
+     * @param invocation
+     * @return result
+     * @throws RpcException
+     */
+    Result invoke(Invocation invocation) throws RpcException;
 
-    public URL getUrl() {
-        return url;
-    }
-
-    public void setUrl(URL url) {
-        this.url = url;
-    }
-
-    public Class<T> getRfs() {
-        return rfs;
-    }
-
-    public void setRfs(Class<T> t) {
-        rfs = t;
-    }
-
-    public Transport getNetClinet() {
-        return netClinet;
-    }
-
-    public void setNetClinet(Transport netClinet) {
-        this.netClinet = netClinet;
-    }
-
-    public Object invoke(Invocation invocation) {
-       return netClinet.send(invocation);
-    }
-
-    public Object doInvoke(Invocation invocation, List<Invoker<T>> invokers, LoadBalance loadbalance, Integer retry) throws Exception { return null;}
 }

@@ -1,21 +1,31 @@
 package com.jinx.cluster;
 
+
+import com.jinx.common.Node;
+import com.jinx.common.URL;
+import com.jinx.rpc.Invocation;
 import com.jinx.rpc.Invoker;
+import com.jinx.rpc.RpcException;
 
 import java.util.List;
 
-public class Directory {
-    private volatile List<Invoker<?>> invokers;
+public interface Directory<T> extends Node {
 
-    public Directory(List<Invoker<?>> invokers) {
-        this.invokers = invokers;
-    }
+    /**
+     * get service type.
+     *
+     * @return service type.
+     */
+    Class<T> getInterface();
 
-    public List<Invoker<?>> getInvokers() {
-        return invokers;
-    }
+    /**
+     * list invokers.
+     *
+     * @return invokers
+     */
+    List<Invoker<T>> list(Invocation invocation) throws RpcException;
 
-    public void setInvokers(List<Invoker<?>> invokers) {
-        this.invokers = invokers;
-    }
+    List<Invoker<T>> getAllInvokers();
+
+    URL getConsumerUrl();
 }
