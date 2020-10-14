@@ -6,8 +6,6 @@ import java.io.Serializable;
 /**
  * Invocation简介
  * RPC 传输信息对象
- * @author wangxin119
- * @date 2020-08-29 23:58
  */
 public class Invocation implements Serializable {
 

@@ -1,5 +1,6 @@
 package com.jinx.cluster.support;
 
+import com.jinx.cluster.AbstractCluster;
 import com.jinx.cluster.Directory;
 import com.jinx.rpc.Invoker;
 

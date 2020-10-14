@@ -1,7 +1,5 @@
-package com.jinx.cluster.support;
+package com.jinx.cluster;
 
-import com.jinx.cluster.Cluster;
-import com.jinx.cluster.Directory;
 import com.jinx.rpc.Invoker;
 import com.jinx.rpc.RpcException;
 
@@ -15,13 +13,14 @@ public abstract class AbstractCluster implements Cluster {
     protected abstract <T> Invoker<T> doJoin(Directory<T> directory);
 
     /**
-     * 根据传入的参数构建ClusterInvoker
+     * 根据传入的参数构建Cluster拦截器
      * @param clusterInvoker
      * @param key
      * @param <T>
      * @return
      */
     private <T> Invoker<T> buildClusterInterceptors(Invoker<T> clusterInvoker, String key) {
+    	//TODO 后续研究
        return clusterInvoker;
     }
 }
